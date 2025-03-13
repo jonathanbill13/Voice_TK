@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Voice Player</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        audio {
+            width: 100%;
+            max-width: 400px;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <audio id="audioPlayer" controls autoplay>
+            Browser Anda tidak mendukung pemutaran audio.
+        </audio>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Daftar URL file audio
+        const voiceLines = [
+            "https://drive.google.com/file/d/1wDOiC1ctVR0OZ7p92WtO653Nr4XiTldF/view?usp=drive_link",
+            "https://drive.google.com/file/d/1SsFXB-1c4FTyyGye6xdyxX-fk28ha3xM/view?usp=drive_link",
+            "https://drive.google.com/file/d/1RgrWpdQiTjeVSErgCLwPMDwHI8Ssp5nU/view?usp=drive_link",
+            "https://drive.google.com/file/d/1rfH3SVWGO_lYjIQgagPbFvd-vvIVjGKa/view?usp=drive_link",
+            "https://drive.google.com/file/d/16swiDFVu014ypCg2WNy7U8AgCfEsiABH/view?usp=drive_link",
+            "https://drive.google.com/file/d/1XGMKcS3-wbxU8BblwjM5zR0m-b7_yQoN/view?usp=drive_link"
+        ];
+
+        // Fungsi untuk memilih audio secara acak
+        function playRandomAudio() {
+            const randomIndex = Math.floor(Math.random() * voiceLines.length);
+            const audioPlayer = document.getElementById("audioPlayer");
+            const message = document.getElementById("message");
+
+            audioPlayer.src = voiceLines[randomIndex];
+            message.textContent = `Memutar: Voice Line ${randomIndex + 1}`;
+            audioPlayer.play();
+        }
+
+        // Jalankan fungsi saat halaman dimuat
+        window.onload = playRandomAudio;
+    </script>
+</body>
+</html>
